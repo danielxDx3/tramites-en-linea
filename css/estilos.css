@@ -438,3 +438,25 @@ footer p {
     animation: none !important;
   }
 }
+
+.boton-principal {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.85rem 1.3rem;
+  color: var(--blanco);
+  background-color: var(--azul-principal);
+  border-radius: 0.45rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.boton-principal:hover,
+.boton-principal:focus {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+}
+
+.boton-principal:focus-visible {
+  outline: 3px solid var(--amarillo-foco);
+  outline-offset: 3px;
+}
