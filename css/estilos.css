@@ -1,0 +1,440 @@
+:root {
+  --azul-principal: #005aa9;
+  --azul-oscuro: #003b73;
+  --azul-claro: #eaf4fb;
+  --celeste: #00a6d6;
+  --blanco: #ffffff;
+  --gris-claro: #f4f7fa;
+  --gris-borde: #d5dde5;
+  --gris-texto: #334155;
+  --texto-principal: #1f2937;
+  --amarillo-foco: #ffd166;
+  --sombra: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Configuración general */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto-principal);
+  background-color: var(--gris-claro);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--azul-principal);
+}
+
+a:hover {
+  color: var(--azul-oscuro);
+}
+
+/* Enlace de accesibilidad */
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border-radius: 0.4rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Encabezado */
+
+header {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+}
+
+.topbar {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--azul-principal);
+  background-color: var(--blanco);
+  border-radius: 50%;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navegación */
+
+nav {
+  background-color: var(--azul-principal);
+}
+
+nav ul {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  padding: 1rem 1.2rem;
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: bold;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus,
+nav a[aria-current="page"] {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+}
+
+nav a:focus-visible {
+  outline: 3px solid var(--amarillo-foco);
+  outline-offset: -4px;
+}
+
+/* Contenido principal */
+
+main {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+/* Bloque de presentación */
+
+.hero {
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+  background:
+    linear-gradient(
+      135deg,
+      var(--azul-claro),
+      var(--blanco)
+    );
+  border-left: 6px solid var(--azul-principal);
+  border-radius: 0.8rem;
+  box-shadow: var(--sombra);
+}
+
+.hero h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--azul-oscuro);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.hero p {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: var(--gris-texto);
+  font-size: 1.05rem;
+}
+
+/* Distribución principal */
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 1.5rem;
+}
+
+section,
+aside {
+  background-color: var(--blanco);
+  border-radius: 0.8rem;
+  box-shadow: var(--sombra);
+}
+
+#consulta,
+#ayuda,
+#servicios {
+  padding: 1.5rem;
+}
+
+section h2,
+aside h2 {
+  margin-top: 0;
+  color: var(--azul-oscuro);
+}
+
+/* Formulario */
+
+form {
+  margin-top: 1rem;
+}
+
+#ayuda-formulario {
+  padding: 0.75rem;
+  color: var(--gris-texto);
+  background-color: var(--azul-claro);
+  border-left: 4px solid var(--celeste);
+  border-radius: 0.3rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--azul-oscuro);
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.75rem;
+  color: var(--texto-principal);
+  background-color: var(--blanco);
+  border: 1px solid #94a3b8;
+  border-radius: 0.4rem;
+  font: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+input:hover,
+select:hover {
+  border-color: var(--azul-principal);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--azul-principal);
+  outline: 3px solid rgba(255, 209, 102, 0.8);
+  box-shadow: 0 0 0 1px var(--azul-principal);
+}
+
+button {
+  margin-top: 1.2rem;
+  padding: 0.85rem 1.4rem;
+  color: var(--blanco);
+  background-color: var(--azul-principal);
+  border: none;
+  border-radius: 0.45rem;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--azul-oscuro);
+  transform: translateY(-2px);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--amarillo-foco);
+  outline-offset: 3px;
+}
+
+/* Área de ayuda */
+
+aside {
+  border-top: 5px solid var(--celeste);
+}
+
+aside ul {
+  margin-bottom: 0;
+  padding-left: 1.3rem;
+}
+
+aside li {
+  margin-bottom: 0.8rem;
+}
+
+/* Servicios */
+
+#servicios {
+  margin-top: 1.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+article {
+  padding: 1.2rem;
+  background-color: #f9fbfd;
+  border: 1px solid var(--gris-borde);
+  border-radius: 0.7rem;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+article:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra);
+}
+
+article h3 {
+  margin-top: 0;
+  color: var(--azul-oscuro);
+}
+
+article p {
+  color: var(--gris-texto);
+}
+
+article a {
+  display: inline-block;
+  padding: 0.55rem 0.8rem;
+  color: var(--blanco);
+  background-color: var(--azul-principal);
+  border-radius: 0.35rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+article a:hover,
+article a:focus {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+}
+
+article a:focus-visible {
+  outline: 3px solid var(--amarillo-foco);
+  outline-offset: 3px;
+}
+
+/* Pie de página */
+
+footer {
+  padding: 1.5rem 1rem;
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Diseño adaptable para tablet */
+
+@media screen and (max-width: 850px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Diseño adaptable para celular */
+
+@media screen and (max-width: 600px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  main {
+    width: 94%;
+    padding-top: 1rem;
+  }
+
+  .hero {
+    padding: 1.4rem;
+  }
+
+  .form-grid,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  #consulta,
+  #ayuda,
+  #servicios {
+    padding: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Menos animaciones para accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
