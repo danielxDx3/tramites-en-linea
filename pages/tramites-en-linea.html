@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Pantalla accesible de consulta de trámites en línea del IESS."
+  >
+
+  <meta name="author" content="Erick Moreno">
+
+  <title>Trámites en línea | IESS</title>
+
+  <style>
+    :root {
+      --azul: #005aa9;
+      --azul-oscuro: #003b73;
+      --celeste: #eaf4fb;
+      --texto: #1f2937;
+      --blanco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background-color: #f6f8fb;
+      line-height: 1.5;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 1000;
+      padding: 0.75rem 1rem;
+      background-color: var(--blanco);
+      border: 2px solid var(--azul);
+    }
+
+    header {
+      color: var(--blanco);
+      background-color: var(--azul-oscuro);
+    }
+
+    .topbar {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: var(--azul);
+      background-color: var(--blanco);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    nav {
+      background-color: var(--azul);
+    }
+
+    nav ul {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    nav a {
+      display: block;
+      padding: 0.9rem 1rem;
+      color: var(--blanco);
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: #004987;
+      outline: 3px solid #ffd166;
+      outline-offset: -3px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .hero {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background: linear-gradient(
+        135deg,
+        var(--celeste),
+        var(--blanco)
+      );
+      border-left: 6px solid var(--azul);
+      border-radius: 0.75rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+    }
+
+    section,
+    aside {
+      padding: 1.5rem;
+      background-color: var(--blanco);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      font: inherit;
+      border: 1px solid #94a3b8;
+      border-radius: 0.4rem;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--azul);
+      outline: 3px solid #ffd166;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.2rem;
+      color: var(--blanco);
+      background-color: var(--azul);
+      border: 0;
+      border-radius: 0.45rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover,
+    button:focus {
+      background-color: var(--azul-oscuro);
+      outline: 3px solid #ffd166;
+    }
+
+    .cards {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    article {
+      padding: 1rem;
+      background-color: #f9fbfd;
+      border: 1px solid #dbe4ee;
+      border-radius: 0.6rem;
+    }
+
+    article h3 {
+      margin-top: 0;
+      color: var(--azul-oscuro);
+    }
+
+    aside ul {
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      padding: 1.25rem;
+      color: var(--blanco);
+      background-color: var(--azul-oscuro);
+      text-align: center;
+    }
+
+    @media screen and (max-width: 760px) {
+      .grid,
+      .form-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido-principal">
+    Saltar al contenido principal
+  </a>
+
+  <header>
+    <div class="topbar">
+      <div
+        class="brand"
+        aria-label="Instituto Ecuatoriano de Seguridad Social"
+      >
+        <div class="logo" aria-hidden="true">
+          IESS
+        </div>
+
+        <span>
+          Instituto Ecuatoriano de Seguridad Social
+        </span>
+      </div>
+
+      <span>Portal de servicios</span>
+    </div>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <ul>
+      <li>
+        <a href="../index.html">
+          Inicio
+        </a>
+      </li>
+
+      <li>
+        <a href="#consulta" aria-current="page">
+          Trámites en línea
+        </a>
+      </li>
+
+      <li>
+        <a href="#servicios">
+          Servicios frecuentes
+        </a>
+      </li>
+
+      <li>
+        <a href="#ayuda">
+          Ayuda
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main id="contenido-principal">
+    <section
+      class="hero"
+      aria-labelledby="titulo-pagina"
+    >
+      <h1 id="titulo-pagina">
+        Consulta de trámites en línea
+      </h1>
+
+      <p>
+        Revise el estado de una solicitud mediante su
+        número de identificación y código de trámite.
+      </p>
+    </section>
+
+    <div class="grid">
+      <section
+        id="consulta"
+        aria-labelledby="titulo-consulta"
+      >
+        <h2 id="titulo-consulta">
+          Consultar estado
+        </h2>
+
+        <form
+          action="#"
+          method="get"
+          aria-describedby="ayuda-formulario"
+        >
+          <p id="ayuda-formulario">
+            Todos los campos marcados con * son obligatorios.
+          </p>
+
+          <div class="form-grid">
+            <div>
+              <label for="tipo-identificacion">
+                Tipo de identificación *
+              </label>
+
+              <select
+                id="tipo-identificacion"
+                name="tipo-identificacion"
+                required
+              >
+                <option value="">
+                  Seleccione una opción
+                </option>
+
+                <option value="cedula">
+                  Cédula
+                </option>
+
+                <option value="pasaporte">
+                  Pasaporte
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label for="identificacion">
+                Número de identificación *
+              </label>
+
+              <input
+                id="identificacion"
+                name="identificacion"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                required
+                aria-required="true"
+              >
+            </div>
+
+            <div>
+              <label for="codigo-tramite">
+                Código del trámite *
+              </label>
+
+              <input
+                id="codigo-tramite"
+                name="codigo-tramite"
+                type="text"
+                required
+                aria-required="true"
+              >
+            </div>
+
+            <div>
+              <label for="correo">
+                Correo electrónico
+              </label>
+
+              <input
+                id="correo"
+                name="correo"
+                type="email"
+                autocomplete="email"
+              >
+            </div>
+          </div>
+
+          <button type="submit">
+            Consultar trámite
+          </button>
+        </form>
+      </section>
+
+      <aside
+        id="ayuda"
+        aria-labelledby="titulo-ayuda"
+      >
+        <h2 id="titulo-ayuda">
+          Antes de consultar
+        </h2>
+
+        <ul>
+          <li>
+            Tenga disponible el código recibido al
+            registrar la solicitud.
+          </li>
+
+          <li>
+            Verifique que la identificación esté escrita
+            sin espacios.
+          </li>
+
+          <li>
+            No comparta sus credenciales con terceros.
+          </li>
+        </ul>
+      </aside>
+    </div>
+
+    <section
+      id="servicios"
+      aria-labelledby="titulo-servicios"
+      style="margin-top: 1.5rem;"
+    >
+      <h2 id="titulo-servicios">
+        Servicios frecuentes
+      </h2>
+
+      <div class="cards">
+        <article>
+          <h3>Historia laboral</h3>
+
+          <p>
+            Consulte aportaciones y períodos registrados.
+          </p>
+
+          <a href="#">
+            Abrir servicio de historia laboral
+          </a>
+        </article>
+
+        <article>
+          <h3>Certificados</h3>
+
+          <p>
+            Genere certificados disponibles para afiliados.
+          </p>
+
+          <a href="#">
+            Abrir servicio de certificados
+          </a>
+        </article>
+
+        <article>
+          <h3>Citas médicas</h3>
+
+          <p>
+            Acceda a opciones de consulta y agendamiento.
+          </p>
+
+          <a href="#">
+            Abrir servicio de citas médicas
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 IESS - Prototipo académico elaborado
+      por Erick Moreno.
+    </p>
+  </footer>
+</body>
+</html>
